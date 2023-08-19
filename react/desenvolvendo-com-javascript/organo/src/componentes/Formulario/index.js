@@ -7,6 +7,7 @@ import { useState } from 'react';
 const Formulario = (props) => {
 
     const aoSalvar = (evento) => {
+        debugger
         evento.preventDefault();
         props.aoColaboradorCadastrado({
             nome,
@@ -14,13 +15,21 @@ const Formulario = (props) => {
             imagem,
             time
         });
-        console.log('Form foi submetido => ', nome, cargo, imagem, time);
+
+        limparFormulario();
     }
 
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
     const [imagem, setImagem] = useState('');
-    const [time, setTime] = useState(props.times[0]);
+    const [time, setTime] = useState('');
+
+    const limparFormulario = () => {
+        setNome('');
+        setCargo('');
+        setImagem('');
+        setTime('');
+    }
 
     return (
         <section className="formulario">
